@@ -31,8 +31,16 @@ class TodoController extends Controller
         // $todo->content = $inputs['content'];
         $todo->fill($inputs);
         $todo->save();
+        
 
         return redirect()->route('todo.index');
     }
+    public function show($id)
+{
+    $model = new Todo();
+    $todo = $model->find($id);
+    
+    return view('todo.show', ['todo' => $todo]);
+}
 }
 
